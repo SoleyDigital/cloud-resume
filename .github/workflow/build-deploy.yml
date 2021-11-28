@@ -6,13 +6,31 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Checkout
-    uses: actions/checkout@v2
+    steps: 
+    - name: Checkout
+    - uses: actions/checkout@v2
 
-      AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
-      AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+        - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-2
 
-    steps:
-      -uses: actions/checkout@v2
-      -name: Deploy Main
-       uses: SoleyDigital/cloud-resume
+    - name: AWS S3 Github Action
+      uses: SoleyDigital/cloud-resume
+      with:
+        source: s3://soleymanshahir.com
+
+
+
+
+
+
+- name: AWS S3 Github Action
+  # You may pin to the exact commit or the version.
+  # uses: keithweaver/aws-s3-github-action@e6b2f7dba9982a13f7b27fbdc0cda58c8791b430
+  uses: keithweaver/aws-s3-github-action@v0.1.2
+  with:
+    # The file path that the file will be sourced from. This can be either a local file or S3 file. The S3 file should lead with s3://.
+    source: 
