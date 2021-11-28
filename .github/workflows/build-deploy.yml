@@ -1,6 +1,8 @@
 name: Upload to S3
 
-on: pull request
+on: 
+  push:
+  - main
 
 jobs:
   upload:
