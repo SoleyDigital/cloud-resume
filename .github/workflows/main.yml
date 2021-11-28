@@ -1,9 +1,0 @@
-- name: S3 Deploy
-  uses: Reggionick/s3-deploy@v3.1.1
-  with:
-    # Directory to deploy
-    folder: ./public
-    # Name of AWS Bucket
-    bucket: soleymanshahir.com
-    # The destination bucket region
-    bucket-region: eu-west-2
