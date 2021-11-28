@@ -1,8 +1,6 @@
 name: Upload to S3
 
-on: 
-  push:
-  - main
+on: [pull_request]
 
 jobs:
   upload:
